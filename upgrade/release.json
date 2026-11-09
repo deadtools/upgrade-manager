@@ -1,0 +1,8 @@
+{
+    "format": "ume-release/1.0",
+    "product": "upgrade-manager",
+    "version": "3.7.4",
+    "channel": "stable",
+    "published_at": "2026-11-09T08:45:00+00:00",
+    "notes": "Database connection source redesign: fixed two-column alignment, added explicit Auto / Config file / Manual modes, local config-path parser, and fixed .env multi-variable parsing."
+}

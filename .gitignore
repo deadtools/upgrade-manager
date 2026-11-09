@@ -1,0 +1,31 @@
+# Local Upgrade Manager configuration / secrets
+upgrade/config.local.php
+upgrade/update-source.local.php
+upgrade/setup-token.local.php
+upgrade/setup-key.local.php
+upgrade/*.secret
+upgrade/*.pem
+upgrade/*.key
+
+# Runtime storage and generated state
+upgrade/.data-*/
+upgrade/.runtime/
+upgrade/runtime/
+upgrade/storage/
+upgrade/backups/
+upgrade/logs/
+upgrade/jobs/
+upgrade/tmp/
+upgrade/cache/
+
+# Common local secret/config files
+.env
+.env.*
+!upgrade/PATCH_UNSIGNED_MANIFEST_TEMPLATE.json
+*.local.php
+*.log
+
+# Build artifacts
+*.zip
+.DS_Store
+Thumbs.db

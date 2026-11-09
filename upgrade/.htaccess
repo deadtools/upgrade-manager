@@ -1,0 +1,13 @@
+# Upgrade Manager: conservative Apache rules for shared hosting.
+# No DirectoryIndex/Options directives: some hosts forbid them in .htaccess.
+<IfModule mod_authz_core.c>
+  <FilesMatch "^(config\.local\.php|update-source\.local\.php|setup-token\.local\.php|setup-key\.local\.php|bootstrap\.php)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  <FilesMatch "^(config\.local\.php|update-source\.local\.php|setup-token\.local\.php|setup-key\.local\.php|bootstrap\.php)$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>

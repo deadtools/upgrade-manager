@@ -1,0 +1,30 @@
+{
+  "warning": "EXAMPLE ONLY. This key/signature is intentionally fake and cannot sign a real site patch.",
+  "algorithm": "HMAC-SHA256",
+  "canonical_actions_json": "{\"clear_cache\":true}",
+  "actions_sha256": "f62a2182b01ef08959387b7d953f05047f80b718d62eae89d3557dd24769c022",
+  "payload_string": "BASE_SITE_VERSION:1.0.0\nTARGET_SITE_VERSION:1.0.1\nACTIONS:f62a2182b01ef08959387b7d953f05047f80b718d62eae89d3557dd24769c022\n",
+  "payload_hash": "777041c2fdd4b7e4455af3a488b9ccfc993f8f997e8f850247966240ceb2d4d2",
+  "example_hmac_key": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+  "message": "example-patch-1.0.1|example-site|example.invalid|777041c2fdd4b7e4455af3a488b9ccfc993f8f997e8f850247966240ceb2d4d2",
+  "signature": "faa4abcae06be2379d0b7a07a26082387a8b9a048f8560ae156732fe886c580b",
+  "manifest": {
+    "format": "external-upgrade-patch/1.3",
+    "patch_id": "example-patch-1.0.1",
+    "name": "Signature algorithm example",
+    "base_site_version": "1.0.0",
+    "version": "1.0.1",
+    "project": "example-project",
+    "domain": "example.invalid",
+    "site_id": "example-site",
+    "php_min": "5.6.0",
+    "files": [],
+    "delete": [],
+    "migrations": [],
+    "actions": {
+      "clear_cache": true
+    },
+    "payload_hash": "777041c2fdd4b7e4455af3a488b9ccfc993f8f997e8f850247966240ceb2d4d2",
+    "signature": "faa4abcae06be2379d0b7a07a26082387a8b9a048f8560ae156732fe886c580b"
+  }
+}

@@ -1,0 +1,7 @@
+<?php
+header('X-Frame-Options: DENY');header('X-Content-Type-Options: nosniff');header('Referrer-Policy: no-referrer');header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+try{
+    require_once __DIR__.'/lib/Util.php';$configFile=__DIR__.'/config.local.php';if(!is_file($configFile))throw new Exception('Upgrade Manager не настроен.');$config=require $configFile;require_once __DIR__.'/lib/CmsAdapter.php';require_once __DIR__.'/lib/Database.php';require_once __DIR__.'/lib/Manager.php';require_once __DIR__.'/lib/SelfUpdater.php';$manager=new UMEManager($config,__DIR__);$updates=new UMESelfUpdater($config,$manager,__DIR__);$key=isset($_SERVER['HTTP_X_UME_UPDATE_KEY'])?(string)$_SERVER['HTTP_X_UME_UPDATE_KEY']:'';$action=isset($_GET['action'])?$_GET['action']:'feed';
+    if($action==='package'){$file=$updates->repositoryPackage($key,isset($_GET['version'])?$_GET['version']:'');header('Content-Type: application/octet-stream');header('Content-Length: '.filesize($file));header('Content-Disposition: attachment; filename="'.basename($file).'"');readfile($file);exit;}
+    $feed=$updates->repositoryFeed($key);header('Content-Type: application/json; charset=utf-8');echo json_encode($feed,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);exit;
+}catch(Exception $e){http_response_code(strpos($e->getMessage(),'ключ')!==false?403:503);header('Content-Type: application/json; charset=utf-8');echo json_encode(array('ok'=>false,'error'=>$e->getMessage()),JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);}
